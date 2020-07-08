@@ -1,0 +1,5 @@
+In arrival.config
+threshold: STA/LTA threshold
+filter = 1 with filter, 0 no filter
+low_freq and high_freq: bandpass filter which was copied from SAC open source
+

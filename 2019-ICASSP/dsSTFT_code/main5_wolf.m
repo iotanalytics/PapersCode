@@ -1,0 +1,60 @@
+close all ; clear all 
+
+% basic parameters for STFT
+basicTF.win = 1025; %4096;
+basicTF.hop = 50; %441;
+basicTF.fs = 11025;
+basicTF.fr = 4;
+basicTF.feat = 'SST11'; % STFT or SST11
+% advanced parameters for STFT
+advTF.num_tap = 1;%num_tap(cc);
+advTF.win_type = 'Gauss'; %{'Gaussian','Thomson','multipeak','SWCE'%};
+advTF.Smo = 1;
+advTF.Rej = 0;
+advTF.ths = 1E-9;
+advTF.HighFreq = 2000/11025;
+advTF.LowFreq = 50/11025;
+advTF.lpc = 0;
+P.num_s = 1;
+P.num_c = 1;
+% parameters for cepstral representation
+cepR.g = 0.3; 
+cepR.Tc=0;
+
+
+[x fs]=wavread('Wolf.wav');
+[tfr, ceps, tceps, tfrr, rtfr, tfrsq, tfrtic] = CFPH(x, basicTF, advTF, cepR, P);
+
+fs = basicTF.fs;
+dt = basicTF.hop/basicTF.fs;
+time_stamp = basicTF.hop/basicTF.fs;
+% advTF.Rej = 2;
+% advTF.num_tap = 10;
+
+
+
+figure(1)
+subplot(221)
+imageSQ(0:time_stamp:time_stamp*(size(rtfr,2)-1), tfrtic*basicTF.fs, tfr.^0.5, 0.995); axis xy; colormap(1-gray);
+xlabel('time (s)'); ylabel('frequency (Hz)'); 
+
+subplot(222)
+imageSQ(0:time_stamp:time_stamp*(size(rtfr,2)-1), tfrtic*basicTF.fs, tfrsq.^0.5, 0.995); axis xy;
+xlabel('time (s)'); ylabel('freqnency (s)');
+
+subplot(223)
+imageSQ(0:time_stamp:time_stamp*(size(rtfr,2)-1), tfrtic*basicTF.fs, rtfr.^0.5, 0.995); axis xy; colormap(1-gray); 
+xlabel('time (s)'); ylabel('frequency (Hz)'); 
+
+subplot(224)
+imageSQ(0:time_stamp:time_stamp*(size(rtfr,2)-1), tfrtic*basicTF.fs, rtfr.^0.5, 0.995); axis xy; colormap(1-gray); axis([-inf inf 0 1000]) ;
+xlabel('time (s)'); ylabel('frequency (Hz)'); 
+
+
+
+
+scrsz = get(0,'ScreenSize');
+figure('Position',[1 scrsz(4) scrsz(3) scrsz(4)/4]) ;
+plot([1:length(x)]/fs, x,'k')
+set(gca,'fontsize', 18) ; xlabel('Time (s)') ; ylabel('arbitrary unit') ;
+axis tight;

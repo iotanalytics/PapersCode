@@ -1,0 +1,90 @@
+BP_FILTER       = ../BandpassFilter
+BP_OBJECTS      = $(BP_FILTER)/obj/afr.o  \
+				  $(BP_FILTER)/obj/alias.o \
+				  $(BP_FILTER)/obj/append.o \
+				  $(BP_FILTER)/obj/apply.o \
+				  $(BP_FILTER)/obj/autcor.o \
+				  $(BP_FILTER)/obj/beroots.o \
+				  $(BP_FILTER)/obj/bilin2.o \
+				  $(BP_FILTER)/obj/buroots.o \
+				  $(BP_FILTER)/obj/c1roots.o \
+				  $(BP_FILTER)/obj/c2roots.o \
+				  $(BP_FILTER)/obj/chebparm.o \
+				  $(BP_FILTER)/obj/complex.o \
+				  $(BP_FILTER)/obj/copydouble.o \
+				  $(BP_FILTER)/obj/crit.o \
+				  $(BP_FILTER)/obj/crscor.o \
+				  $(BP_FILTER)/obj/cutoffs.o \
+				  $(BP_FILTER)/obj/decim.o \
+				  $(BP_FILTER)/obj/design.o \
+				  $(BP_FILTER)/obj/dfr.o \
+				  $(BP_FILTER)/obj/dircor.o \
+				  $(BP_FILTER)/obj/edecim.o \
+				  $(BP_FILTER)/obj/fft.o \
+				  $(BP_FILTER)/obj/firtrn.o \
+				  $(BP_FILTER)/obj/fstrncpy.o \
+				  $(BP_FILTER)/obj/gauss.o \
+				  $(BP_FILTER)/obj/iirfilter.o \
+				  $(BP_FILTER)/obj/inspect.o \
+				  $(BP_FILTER)/obj/levinD.o \
+				  $(BP_FILTER)/obj/levin.o \
+				  $(BP_FILTER)/obj/linpack.o \
+				  $(BP_FILTER)/obj/lp.o \
+				  $(BP_FILTER)/obj/lptbp.o \
+				  $(BP_FILTER)/obj/lptbr.o \
+				  $(BP_FILTER)/obj/lpthp.o \
+				  $(BP_FILTER)/obj/math.o \
+				  $(BP_FILTER)/obj/mem.o \
+				  $(BP_FILTER)/obj/mlm.o \
+				  $(BP_FILTER)/obj/overlp.o \
+				  $(BP_FILTER)/obj/pds.o \
+				  $(BP_FILTER)/obj/pef.o \
+				  $(BP_FILTER)/obj/phaseshift.o \
+				  $(BP_FILTER)/obj/random.o \
+				  $(BP_FILTER)/obj/rms.o \
+				  $(BP_FILTER)/obj/shift.o \
+				  $(BP_FILTER)/obj/spectr.o \
+				  $(BP_FILTER)/obj/step.o \
+				  $(BP_FILTER)/obj/subscpy.o \
+				  $(BP_FILTER)/obj/unit.o \
+				  $(BP_FILTER)/obj/warp.o \
+				  $(BP_FILTER)/obj/wiener.o \
+				  $(BP_FILTER)/obj/window.o \
+				  $(BP_FILTER)/obj/winmov.o \
+				  $(BP_FILTER)/obj/xapiir.o \
+				  $(BP_FILTER)/obj/zero.o \
+				  $(BP_FILTER)/obj/zshft.o
+
+INCLUDES        = $(SYSTEM_INCLUDES) -I./include/ -I. -I$(BP_FILTER)/include
+LDFLAGS         = $(SYSTEM_LDFLAGS)
+LIBS            = $(SYSTEM_LIBS) $(BP_OBJECTS)
+CFLAGS          = -O $(SYSTEM_CFLAGS) $(SYSTEM_HAVES) $(INCLUDES)
+
+PICKING_TEST = 1
+ifdef PICKING_TEST
+	CFLAGS += -DPICKING_TEST
+endif
+
+TARGETS = arrtime 
+
+SRC_DIR = ./src
+OBJ_DIR = ./obj
+
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)  
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS)) 
+
+all: $(TARGETS)
+
+$(TARGETS): $(OBJS)
+	$(CC) -o $@ $(filter %.o, $^) $(LDFLAGS) $(LIBS)
+
+$(OBJ_DIR)/%.o:$(OBJ_DIR) $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -o $@ -c $(filter %.cpp, $^)
+
+# clean
+clean_objs :
+	rm -rf ./obj/*
+
+clean: 
+	rm -f $(TARGETS)
+	rm -rf ./obj/*

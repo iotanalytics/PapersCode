@@ -1,0 +1,1 @@
+./arrtime 3ChannelTestData/2001.275.00.13.05.0000.XN.ALEX..BHZ.M.SEGY 3ChannelTestData/2001.275.00.13.05.0000.XN.ALEX..BHE.M.SEGY 3ChannelTestData/2001.275.00.13.05.0000.XN.ALEX..BHN.M.SEGY arrivaltime.dat station.dat 0

@@ -1,0 +1,4 @@
+threshold=2
+filter=1
+low_freq=5
+high_freq=35
