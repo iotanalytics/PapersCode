@@ -1,0 +1,5 @@
+Fangyu Li; WenZhan Song; Changwei Li; Aiying Yang
+Non-Harmonic Analysis based Instantaneous Heart Rate Estimation from Photoplethysmography 
+IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2019.
+
+http://sensorweb.engr.uga.edu/wp-content/uploads/2019/02/Dropbox_li2019nonharmonic.pdf
