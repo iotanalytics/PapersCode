@@ -1,0 +1,43 @@
+*** MATLAB CODE for 'Matrix Factorization with Binary Components' ***
+
+##############################################################
+Author: Martin Slawski, with contributions by Matthias Hein 
+Version: 0.1
+Date: 11-05-2014
+Tested on: MATLAB R2012a, Ubuntu 14.04 & Microsoft Windows 8
+##############################################################
+
+Description:
+This is code accompanying the paper
+
+Matrix Factorization with Binary Components
+Martin Slawski, Matthias Hein, Pavlo Lutsik
+NIPS 2013
+
+
+Installation instructions:
+Extract zip, add resulting folders to the MATLAB path.
+
+Then run
+
+mexAll.m
+
+For examples, please examples.m
+
+NOTE: This code has not been tested extensively. In case
+you detect any problem/bug, please contact me by email. Do
+not hesitate to ask if you have any questions. Feedback is
+welcome.
+
+
+(C) 2014 Martin Slawski  
+
+
+
+
+
+
+
+
+
+ 
