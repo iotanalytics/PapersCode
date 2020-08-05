@@ -1,4 +1,4 @@
-This paper is the from 
+This paper is from 
 http://sensorweb.engr.uga.edu/wp-content/uploads/2019/09/li2019detection.pdf
 
 - dataset
