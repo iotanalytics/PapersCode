@@ -4,13 +4,13 @@ close all;
 clc;
 addpath(genpath('code_mfbc'))
 
-load('normal_data_n.mat')
+load('dataset/normal_data_n.mat')
 
 % number of attack type
 n = 7;
 
 for i = 1:n
-    eval(['load fault', num2str(i),'_data_n'])
+    eval(['load dataset/fault', num2str(i),'_data_n'])
 end
 %%
 % for every fault situation
