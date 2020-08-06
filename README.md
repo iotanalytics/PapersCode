@@ -1,4 +1,6 @@
-# PapersCode (http://sensorweb.engr.uga.edu/index.php/publications/)
+# PapersCode
+
+Papers are at http://sensorweb.engr.uga.edu/index.php/publications/. The code directory name is the bibtex name of the paper.
 	
 Fangyu Li; Maria Valero; Jose Clemente; Zion Tse; WenZhan Song
 Smart Sleep Monitoring System via Passively Sensing Human Vibration Signals Journal Article 
